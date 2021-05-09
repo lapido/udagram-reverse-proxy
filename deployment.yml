@@ -1,15 +1,18 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: udagram-reverse-proxy
+    app: udagram-reverse-proxy
   name: udagram-reverse-proxy
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: udagram-reverse-proxy
   template:
     metadata:
       labels:
-        service: udagram-reverse-proxy
+        app: udagram-reverse-proxy
     spec:
       containers:
       - image: swissvic/udagram-reverse-proxy
